@@ -65,3 +65,41 @@ hatch build
 ```shell
 hatch version <new_version>
 ```
+
+### Publishing
+
+#### Test publishing
+
+Create `.env.test` with contents (when doing first ever release, you will not be able to constrain the token to project -- create one for entire account and then switch to project-based token):
+```shell
+export HATCH_INDEX_USER=__token__
+# token from "API tokens" of https://test.pypi.org/manage/account/
+export HATCH_INDEX_AUTH=pypi-...
+```
+
+then publish to the testing PyPI:
+
+```shell
+hatch version <new_version>
+source .env.test
+hatch publish -r test -y
+```
+
+#### Publishing to prod
+
+Create `.env.prod` with contents (when doing first ever release, you will not be able to constrain the token to project -- create one for entire account and then switch to project-based token):
+```shell
+export HATCH_INDEX_USER=__token__
+# token from "API tokens" of https://pypi.org/manage/account/
+export HATCH_INDEX_AUTH=pypi-...
+```
+
+then publish to the testing PyPI:
+
+```shell
+# maybe also: hatch version <new_version>
+source .env.prod
+hatch publish -r main -y
+```
+
+See also [`hatch publish`](https://hatch.pypa.io/1.9/publish/) documentation.

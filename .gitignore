@@ -7,3 +7,4 @@ htmlcov.dev/
 log*/*.log
 log*/*.log.bz2
 dist/
+.env.*

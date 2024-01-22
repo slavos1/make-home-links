@@ -88,3 +88,6 @@ check = "mypy --strict --install-types --non-interactive make_home_links tests {
 
 [tool.hatch.envs.hatch-static-analysis]
 config-path = "ruff_defaults.toml"
+
+[tool.hatch.publish.index]
+disable = true
